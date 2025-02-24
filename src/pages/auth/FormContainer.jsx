@@ -10,7 +10,7 @@ const FormContainer = (props) => {
           src="https://static-task-assets.react-formula.com/capstone_sign_in_scene.png"
         />
         <div className="absolute top-0 left-0 w-full h-full bg-black/10"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-green-800/50"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-green-00/50"></div>
       </div>
 
       <div className="flex flex-col flex-1 items-center justify-center w-full bg-green-100 h-screen ">

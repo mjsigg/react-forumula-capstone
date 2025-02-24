@@ -12,7 +12,7 @@ const AuthForm = (props) => {
   });
 
   return (
-    <form className="rounded bg-white border-slate-400 border ">
+    <form className="rounded bg-white border-slate-300 border ">
       {fields.map((field) => (
         <Field
           onChange={(e) =>
@@ -24,7 +24,7 @@ const AuthForm = (props) => {
           values={values}
         />
       ))}
-      <div className="flex ">
+      <div className="flex">
         <button
           key={submitButtonLabel}
           className="bg-emerald-400 w-full m-4 rounded py-2 text-white"

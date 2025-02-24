@@ -1,26 +1,32 @@
 import AuthForm from "./AuthForm";
-
+import FormContainer from "./FormContainer";
+import { Link } from "react-router-dom";
 const SignUpPage = () => {
   return (
-    <section className="flex border justify-center items-center p-2 m-2">
-      <AuthForm
-        fields={[
-          {
-            label: "username",
-            type: "text",
-          },
-          {
-            label: "password",
-            type: "text",
-          },
-          {
-            label: "confirm password",
-            type: "text",
-          },
-        ]}
-        submitButtonLabel="sign-in"
-      />
-    </section>
+    <FormContainer>
+      <section className="flex justify-center items-center p-2 m-2">
+        <AuthForm
+          fields={[
+            {
+              label: "username",
+              type: "text",
+            },
+            {
+              label: "password",
+              type: "text",
+            },
+            {
+              label: "confirm password",
+              type: "text",
+            },
+          ]}
+          submitButtonLabel="sign-up"
+        />
+      </section>
+      <Link to={"/sign-in"} className="underline text">
+        sign-in
+      </Link>
+    </FormContainer>
   );
 };
 

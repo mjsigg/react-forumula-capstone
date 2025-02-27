@@ -1,13 +1,14 @@
 import AuthForm from "./AuthForm";
 import FormContainer from "./FormContainer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as userService from "services/user";
 import { useState } from "react";
 const SignUpPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
   return (
     <FormContainer>
-      {<p className="text-red-500">{errorMessage}</p>}
+      {<p className="text-red-500 mt-1">{errorMessage}</p>}
       <section className="flex justify-center items-center p-2 m-2">
         <AuthForm
           fields={[
@@ -40,17 +41,28 @@ const SignUpPage = () => {
             }
             setErrorMessage("");
             // make request
-            const response = await userService.createUser({
-              username: values.username,
-              password: values.password,
-            });
+            try {
+              const response = await userService.createUser({
+                username: values.username,
+                password: values.password,
+              });
 
-            if (response.status != 201) {
-              const data = await response.json();
-              setErrorMessage(data.error);
-            } else {
-              console.log("User created successfully!");
-              setErrorMessage("");
+              console.log(response);
+
+              if (response.status != 201) {
+                const data = await response.json();
+                setErrorMessage(data.error);
+              } else {
+                // navigate the user to signin page
+                setErrorMessage("");
+                navigate("/", {
+                  state: {
+                    accountCreated: true,
+                  },
+                });
+              }
+            } catch (error) {
+              setErrorMessage(error.message);
             }
           }}
         />

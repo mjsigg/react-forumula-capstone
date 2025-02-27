@@ -35,7 +35,6 @@ const AuthForm = (props) => {
       ))}
       <div className="flex">
         <button
-          onSubmit={() => setisLoading(true)}
           key={submitButtonLabel}
           className="bg-emerald-400 w-full m-4 rounded py-2 text-white relative"
         >
